@@ -109,19 +109,12 @@ An earlier MiniLM-only classifier was evaluated on 3,000 labeled conversations:
 
 
 | Metric | Result |
-
 |---|---:|
-
 | Accuracy | 95.43% |
-
 | Scam recall | 98.57% |
-
 | Correctly detected scams | 1,451 |
-
 | Missed scams | 21 |
-
 | False scam warnings | 116 |
-
 
 
 These results apply to the MiniLM-only classifier, not the final combined system that uses Qwen to verify, change, and explain the results.
