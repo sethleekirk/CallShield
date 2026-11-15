@@ -2,10 +2,6 @@
 
 
 
-**Track:** Finance  
-
-**Team:** Seth Kirk
-
 
 
 ## The Problem
