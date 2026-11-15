@@ -1,0 +1,48 @@
+{
+  "notes": "Scores are relative similarity heuristics, not calibrated scam probabilities. Threshold 50% is exploratory.",
+  "input": "C:\\Users\\sethl\\OneDrive\\Desktop\\ICFD_Redistributed\\validation.jsonl",
+  "index": "C:\\Users\\sethl\\OneDrive\\Desktop\\ICFD_Redistributed\\semantic_index",
+  "overlap_uids": 0,
+  "evaluated_conversations": 100,
+  "settings": {
+    "input": "validation.jsonl",
+    "index": "semantic_index",
+    "output": "evaluation_results",
+    "limit_per_label": 50,
+    "k": 20,
+    "window": 6,
+    "batch_size": 32,
+    "seed": 42
+  },
+  "confusion": {
+    "true_scam_pred_scam": 50,
+    "true_scam_pred_legit": 0,
+    "true_legit_pred_scam": 4,
+    "true_legit_pred_legit": 46
+  },
+  "accuracy": 0.96,
+  "scam_precision": 0.9259259259259259,
+  "scam_recall": 1.0,
+  "scam_f1": 0.9615384615384615,
+  "legit_specificity": 0.92,
+  "by_label": {
+    "YES": {
+      "final_score": 60.943,
+      "mean_score": 59.806,
+      "score_std": 6.026,
+      "change_std": 4.018,
+      "mean_abs_change": 3.089,
+      "max_abs_change": 10.159,
+      "net_change": 10.557
+    },
+    "NO": {
+      "final_score": 38.034,
+      "mean_score": 38.878,
+      "score_std": 5.713,
+      "change_std": 3.943,
+      "mean_abs_change": 3.009,
+      "max_abs_change": 9.64,
+      "net_change": -6.541
+    }
+  }
+}

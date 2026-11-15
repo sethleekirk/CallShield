@@ -1,0 +1,10 @@
+whisper_env/
+.venv/
+__pycache__/
+*.pyc
+.env
+*.wav
+*.mp3
+*.log
+.gitignore.bak
+desktop.ini

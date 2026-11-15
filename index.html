@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CallShield · AI Phone Scam Detector</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#18243b;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}header{background:#fff;border-bottom:1px solid #e3e9f1}.top{max-width:1100px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px}.mark{display:grid;place-items:center;background:#e8f0ff;color:#285cc7;width:40px;height:40px;border-radius:12px}.tag{font-size:12px;background:#edf8f2;color:#25744e;padding:7px 11px;border-radius:999px;font-weight:700}main{max-width:1100px;margin:42px auto;padding:0 24px 50px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#5273aa;font-weight:800}h1{font-size:clamp(28px,4vw,42px);letter-spacing:-1.3px;margin:9px 0 12px}p.lead{color:#66758c;line-height:1.6;max-width:650px;margin:0 0 30px}.layout{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}.panel{background:#fff;border:1px solid #e2e8f1;border-radius:18px;padding:25px;box-shadow:0 8px 28px rgba(35,56,93,.035)}h2{font-size:18px;margin:0 0 6px}.sub{color:#758198;font-size:13px;line-height:1.5;margin:0 0 20px}label{font-weight:700;font-size:13px;display:block;margin-bottom:10px}textarea{width:100%;min-height:315px;resize:vertical;border:1px solid #d7e0eb;border-radius:12px;padding:16px;outline:none;font:14px/1.65 inherit;color:#24334b;background:#fbfcfe}textarea:focus{border-color:#6c95df;box-shadow:0 0 0 3px #eaf1ff}.meta{display:flex;justify-content:space-between;align-items:center;margin:10px 0 17px;font-size:12px;color:#718098;gap:12px}.invalid{color:#a85c1c}button{font:inherit;cursor:pointer}.primary{border:0;background:#285fd0;color:#fff;border-radius:11px;padding:14px 18px;font-weight:750;width:100%;transition:background .2s}.primary:hover:not(:disabled){background:#1b4eaF}.primary:disabled{background:#b4c3d9;cursor:not-allowed}.secondary{border:1px solid #d8e1ec;background:#fff;border-radius:9px;padding:8px 12px;color:#475875;font-size:12px;font-weight:700}.secondary:hover{background:#f5f8fd}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.placeholder{min-height:325px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#74829a}.circle{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:#f0f5ff;font-size:29px;margin-bottom:17px}.placeholder strong{color:#3a4962;margin-bottom:8px}.status{display:inline-flex;gap:9px;align-items:center;padding:10px 13px;border-radius:10px;font-weight:800;font-size:14px;margin:8px 0 20px}.yes{background:#fff0ed;color:#b34232}.no{background:#eaf8f0;color:#25744e}.uncertain{background:#fff5df;color:#92600e}.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:17px}.score{border:1px solid #e5eaf2;border-radius:12px;padding:15px}.score small{display:block;color:#718098;font-size:12px;margin-bottom:8px}.score b{font-size:25px;letter-spacing:-.5px}.bar{display:flex;height:9px;background:#e7edf5;border-radius:99px;overflow:hidden;margin-bottom:20px}.bar .scam{background:#e47b67}.bar .legit{background:#5d94d9}.explanation{border-top:1px solid #e7edf4;padding-top:18px}.explanation h3{font-size:14px;margin:0 0 9px}.explanation p{color:#4d5e76;font-size:14px;line-height:1.7;white-space:pre-wrap;margin:0}.foot{font-size:12px;color:#7a8799;line-height:1.6;margin-top:18px}.error{background:#fff0ed;color:#a13e34;padding:12px;border-radius:9px;font-size:13px;margin-top:13px}.hidden{display:none!important}.spin{display:inline-block;width:14px;height:14px;border:2px solid #fff7;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:800px){.layout{grid-template-columns:1fr}main{margin-top:28px}.panel{padding:20px}.top{padding:16px 20px}}
+.record-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 20px}.record-status{font-size:12px;color:#64748b}.record-status.active{color:#b34232;font-weight:700}#stopRecording{border-color:#b34232;color:#b34232}textarea[readonly]{background:#f7f9fc}.peak-evidence{border:1px solid #efb1a7;background:#fff0ed;border-radius:12px;padding:14px 15px;margin:0 0 17px}.peak-evidence strong{display:block;color:#a43d31;font-size:13px;margin-bottom:7px}.peak-evidence p{margin:0;color:#753a32;line-height:1.55;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><span class="mark">◇</span><span>CallShield</span></div><span class="tag">LOCAL AI ANALYSIS</span></div></header>
+<main><div class="eyebrow">Conversation safety analysis</div><h1>Spot the warning signs in a call.</h1><p class="lead">Paste or record a phone conversation to screen for potential scam indicators using MiniLM, with Qwen explanations for flagged conversations. Results are advisory, not proof of fraud.</p>
+<div class="layout"><section class="panel"><div class="row"><h2>Conversation transcript</h2><button class="secondary" id="clearBtn" type="button">Clear</button></div><p class="sub">Include both sides of the conversation for better context.</p><div class="record-tools"><button class="secondary" id="startRecording" type="button">🎙 Start live recording</button><button class="secondary hidden" id="stopRecording" type="button">■ Stop &amp; analyze</button><span id="recordStatus" class="record-status" aria-live="polite">Microphone off</span></div><label for="transcript">Paste or type a transcript</label><textarea id="transcript" placeholder="Caller: Hello, I'm calling about...&#10;Customer: Can you tell me more?" spellcheck="true"></textarea><div class="meta"><span id="wordCount" aria-live="polite">0 / 20 words minimum</span><span>Minimum 20 words</span></div><button class="primary" id="analyzeBtn" type="button" disabled>Analyze conversation</button><div id="error" class="error hidden" role="alert"></div><p class="foot">Your transcript is sent only to the FastAPI server hosting this page. Avoid pasting real passwords, security codes, or other sensitive information.</p></section>
+<section class="panel" aria-live="polite"><h2>Analysis results</h2><p class="sub">Classification and evidence from the complete transcript.</p><div id="empty" class="placeholder"><div class="circle">⌕</div><strong>Ready when you are</strong><span>Enter at least 20 words and click Analyze conversation to see results.</span></div><div id="loading" class="placeholder hidden"><div class="circle">◌</div><strong>Analyzing conversation…</strong><span>MiniLM is checking the transcript. Qwen may take additional time.</span></div><div id="results" class="hidden"><div id="status" class="status"></div><div id="reviewDetails" class="score hidden" style="margin-bottom:16px;line-height:1.7;font-size:13px"></div><div class="score-grid"><div class="score"><small>Overall scam similarity</small><b id="scamScore">—</b></div><div class="score"><small>Legitimate similarity</small><b id="legitScore">—</b></div></div><div class="score" id="peakCard" style="margin-bottom:16px"><small>Highest 20-word section score</small><b id="peakScore">—</b><p class="foot" id="peakMeta" style="margin:6px 0 0">Waiting for a completed 20-word section</p></div><div class="peak-evidence hidden" id="peakEvidence"><strong id="peakEvidenceTitle">Most suspicious 20-word passage</strong><p id="peakEvidenceText"></p></div><div class="bar" aria-label="Relative similarity scores"><div class="scam" id="scamBar"></div><div class="legit" id="legitBar"></div></div><div class="explanation" id="explanationSection"><h3 id="explainTitle">Explanation</h3><p id="explainText"></p></div><p class="foot" id="segments"></p><p class="foot">Similarity scores are relative retrieval heuristics, not probabilities. A call marked “Not flagged” is not guaranteed safe. Verify unexpected requests through official contact channels.</p></div></section></div></main>
+<script>
+'use strict';
+const MIN_WORDS = 20;
+const transcript = document.getElementById('transcript');
+const analyzeBtn = document.getElementById('analyzeBtn');
+const wordCount = document.getElementById('wordCount');
+const errorBox = document.getElementById('error');
+const empty = document.getElementById('empty');
+const loading = document.getElementById('loading');
+const results = document.getElementById('results');
+let busy = false;
+function countWords(value) { return (value.trim().match(/\S+/g) || []).length; }
+function updateButton() {
+  const count = countWords(transcript.value);
+  wordCount.textContent = `${count} / ${MIN_WORDS} words minimum`;
+  wordCount.classList.toggle('invalid', count < MIN_WORDS);
+  analyzeBtn.disabled = busy || recording || count < MIN_WORDS;
+  analyzeBtn.textContent = busy ? 'Analyzing…' : 'Analyze conversation';
+}
+function showError(message) { errorBox.textContent = message; errorBox.classList.remove('hidden'); }
+function hideError() { errorBox.textContent = ''; errorBox.classList.add('hidden'); }
+function showPeakEvidence(data) {
+  const panel = document.getElementById('peakEvidence');
+  const chunk = data.peak_chunk;
+  if (!chunk || !chunk.text) { panel.classList.add('hidden'); return; }
+  const label = chunk.block_number ? `Section ${chunk.block_number}` : 'Highest-scoring section';
+  document.getElementById('peakEvidenceTitle').textContent =
+    `Most suspicious passage · ${label} · ${Number(chunk.score).toFixed(1)}%`;
+  document.getElementById('peakEvidenceText').textContent = chunk.text;
+  panel.classList.remove('hidden');
+}
+function displayClass(result) {
+  return result === "YES?" || result === "NO?" ? "UNSURE" : result;
+}
+function setStatus(result, live = false) {
+  result = displayClass(result);
+  const status = document.getElementById('status');
+  const labels = {
+    'YES': ['yes', '⚠ YES — Potential scam detected'],
+    'UNSURE': ['uncertain', '⚠ UNSURE — Review recommended'],
+    'NO': ['no', '✓ NO — No scam flagged']
+  };
+  const [kind, message] = labels[result] || ['uncertain', '● Waiting for enough words to analyze'];
+  status.className = `status ${kind}`;
+  status.textContent = live && result ? `${message} · Live` : message;
+}
+function displayResult(data) {
+  const scam = Number(data.scam_similarity);
+  const legit = Number(data.legitimate_similarity);
+  if (!Number.isFinite(scam) || !Number.isFinite(legit)) throw new Error('The server returned missing or invalid similarity scores.');
+  const classification = data.result;
+  if (!['YES', 'YES?', 'NO?', 'NO', 'UNSURE'].includes(classification)) throw new Error('The server returned an unknown classification.');
+  const peak = Number(data.highest_chunk_similarity);
+  const hasPeak = data.highest_chunk_similarity != null && Number.isFinite(peak);
+  setStatus(classification);
+  const review = document.getElementById('reviewDetails');
+  if (data.minilm_result && data.qwen_result) {
+    review.classList.remove('hidden');
+    const reviewLabel = data.qwen_result === 'UNSURE' ? 'UNSURE (MiniLM retained)' : data.qwen_result;
+    review.textContent = `MiniLM initial: ${displayClass(data.minilm_result)}  |  Qwen review: ${displayClass(reviewLabel)}  |  Final: ${displayClass(classification)}` +
+      (data.qwen_overrode ? '  — Qwen override' : '');
+  } else if (data.minilm_result) {
+    review.classList.remove('hidden');
+    review.textContent = `MiniLM initial: ${displayClass(data.minilm_result)}  |  Qwen review unavailable — MiniLM retained`;
+  } else {
+    review.classList.add('hidden');
+  }
+  document.getElementById('peakScore').textContent = hasPeak ? `${peak.toFixed(1)}%` : '—';
+  showPeakEvidence(data);
+  const sections = data.chunks_analyzed ?? data.segments_analyzed ?? 0;
+  document.getElementById('peakMeta').textContent = hasPeak ? `${sections} section(s) scored; peak is a similarity indicator, not a probability` : '20-word section scoring is available during analysis';
+  document.getElementById('scamScore').textContent = `${scam.toFixed(1)}%`;
+  document.getElementById('legitScore').textContent = `${legit.toFixed(1)}%`;
+  document.getElementById('scamBar').style.width = `${Math.max(0,Math.min(100,scam))}%`;
+  document.getElementById('legitBar').style.width = `${Math.max(0,Math.min(100,legit))}%`;
+  const title = document.getElementById('explainTitle');
+  const explanation = document.getElementById('explainText');
+  title.textContent = 'Qwen verification';
+  if (data.qwen_reason) {
+    explanation.textContent = data.qwen_reason + (data.qwen_review_uncertain ? '\n\nQwen was unsure; MiniLM classification was retained.' : '') +
+      '\n\nThis is an AI assessment, not proof that a call is safe or fraudulent.';
+  } else if (data.qwen_error) {
+    explanation.textContent = `Qwen verification unavailable: ${data.qwen_error}. MiniLM classification was retained.`;
+  } else {
+    explanation.textContent = 'No Qwen verification available.';
+  }
+  document.getElementById('explanationSection').classList.remove('hidden');
+  document.getElementById('segments').textContent = `${sections} MiniLM 20-word section(s) analyzed`;
+  empty.classList.add('hidden'); loading.classList.add('hidden'); results.classList.remove('hidden');
+}
+async function analyze() {
+  if (busy || countWords(transcript.value) < MIN_WORDS) return;
+  busy = true; updateButton(); hideError();
+  empty.classList.add('hidden'); results.classList.add('hidden'); loading.classList.remove('hidden');
+  try {
+    const response = await fetch('/analyze', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({transcript:transcript.value})});
+    if (!response.ok) {
+      let detail = ''; try { const body = await response.json(); detail = typeof body.detail === 'string' ? body.detail : JSON.stringify(body.detail || ''); } catch (_) {}
+      throw new Error(`Server returned HTTP ${response.status}${detail ? ': '+detail : ''}`);
+    }
+    displayResult(await response.json());
+  } catch (err) {
+    loading.classList.add('hidden'); empty.classList.remove('hidden');
+    showError(`${err.message}. Check that FastAPI is running and /analyze is available.`);
+  } finally { busy = false; updateButton(); }
+}
+transcript.addEventListener('input', updateButton);
+analyzeBtn.addEventListener('click', analyze);
+document.getElementById('clearBtn').addEventListener('click', () => { if (recording || finishing) return; transcript.value = ''; hideError(); results.classList.add('hidden'); loading.classList.add('hidden'); empty.classList.remove('hidden'); updateButton(); transcript.focus(); });
+// Live recording: 16kHz mono float32 chunks, processed in order on the server.
+let recording = false, finishing = false, micStream = null, audioContext = null;
+let micSource = null, micProcessor = null, silentGain = null, sessionId = null;
+let samples = [], sampleCount = 0, uploadChain = Promise.resolve(), recordError = null;
+const startRecordingBtn = document.getElementById('startRecording');
+const stopRecordingBtn = document.getElementById('stopRecording');
+const recordStatus = document.getElementById('recordStatus');
+const CHUNK_SAMPLES = 80000;
+async function apiPost(url, data) {
+  const response = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+  if (!response.ok) {
+    let message = `HTTP ${response.status}`;
+    try { const json = await response.json(); message = typeof json.detail === 'string' ? json.detail : message; } catch (_) {}
+    throw new Error(message);
+  }
+  return response.json();
+}
+function encodeAudio(samplesArray) {
+  const bytes = new Uint8Array(samplesArray.buffer, samplesArray.byteOffset, samplesArray.byteLength);
+  let result = '';
+  for (let i=0; i<bytes.length; i+=8192) result += String.fromCharCode(...bytes.subarray(i,i+8192));
+  return btoa(result);
+}
+function updateLiveScore(data) {
+  if (data.transcript !== undefined) { transcript.value = data.transcript; updateButton(); }
+  if (data.scam_similarity === null || data.scam_similarity === undefined) return;
+  const scam = Number(data.scam_similarity), legit = 100 - scam;
+  empty.classList.add('hidden'); loading.classList.add('hidden'); results.classList.remove('hidden');
+  setStatus(data.result, true);
+  document.getElementById('peakScore').textContent = data.highest_chunk_similarity == null ? '—' : `${Number(data.highest_chunk_similarity).toFixed(1)}%`;
+  document.getElementById('peakMeta').textContent = `${data.chunks_analyzed || 0} completed 20-word section(s) analyzed`;
+  showPeakEvidence(data);
+  document.getElementById('scamScore').textContent = `${scam.toFixed(1)}%`;
+  document.getElementById('legitScore').textContent = `${legit.toFixed(1)}%`;
+  document.getElementById('scamBar').style.width = `${Math.max(0,Math.min(100,scam))}%`;
+  document.getElementById('legitBar').style.width = `${Math.max(0,Math.min(100,legit))}%`;
+  document.getElementById('explanationSection').classList.add('hidden');
+  document.getElementById('reviewDetails').classList.add('hidden');
+  document.getElementById('segments').textContent = 'Live average and highest 20-word section score — not fraud probabilities';
+}
+function queueChunk(floatSamples) {
+  const audio_b64 = encodeAudio(floatSamples);
+  uploadChain = uploadChain.then(async () => {
+    if (recordError) return;
+    const data = await apiPost('/live/chunk', {session_id:sessionId, audio_b64});
+    updateLiveScore(data);
+  }).catch(err => { recordError = err; showError(`Live transcription stopped: ${err.message}`); });
+}
+function pushAudio(newSamples) {
+  samples.push(new Float32Array(newSamples)); sampleCount += newSamples.length;
+  while (sampleCount >= CHUNK_SAMPLES) {
+    const joined = new Float32Array(CHUNK_SAMPLES); let written = 0;
+    while (written < CHUNK_SAMPLES) {
+      const first = samples[0], take = Math.min(first.length, CHUNK_SAMPLES-written);
+      joined.set(first.subarray(0,take), written); written += take;
+      if (take === first.length) samples.shift(); else samples[0] = first.subarray(take);
+      sampleCount -= take;
+    }
+    queueChunk(joined);
+  }
+}
+function downsample(input, fromRate) {
+  const ratio = fromRate / 16000;
+  const length = Math.floor(input.length / ratio);
+  const output = new Float32Array(length);
+  for (let i=0;i<length;i++) {
+    const start=Math.floor(i*ratio), end=Math.max(start+1,Math.floor((i+1)*ratio));
+    let total=0; for(let j=start;j<Math.min(end,input.length);j++) total+=input[j];
+    output[i]=total/(Math.min(end,input.length)-start);
+  }
+  return output;
+}
+function cleanupMic() {
+  if (micProcessor) { micProcessor.onaudioprocess=null; micProcessor.disconnect(); micProcessor=null; }
+  if (micSource) { micSource.disconnect(); micSource=null; }
+  if (silentGain) { silentGain.disconnect(); silentGain=null; }
+  if (micStream) { micStream.getTracks().forEach(track=>track.stop()); micStream=null; }
+  if (audioContext) { audioContext.close().catch(()=>{}); audioContext=null; }
+}
+async function startLive() {
+  if (recording || finishing || busy) return;
+  hideError(); recordError=null;
+  try {
+    if (!navigator.mediaDevices?.getUserMedia) throw new Error('Microphone requires localhost or HTTPS');
+    micStream = await navigator.mediaDevices.getUserMedia({audio:{channelCount:1, echoCancellation:true},video:false});
+    sessionId = (await apiPost('/live/start', {})).session_id;
+    audioContext = new AudioContext();
+    micSource = audioContext.createMediaStreamSource(micStream);
+    micProcessor = audioContext.createScriptProcessor(4096,1,1);
+    silentGain = audioContext.createGain(); silentGain.gain.value=0;
+    samples=[];sampleCount=0;uploadChain=Promise.resolve();
+    micProcessor.onaudioprocess = event => {
+      if (!recording) return;
+      const pcm = event.inputBuffer.getChannelData(0);
+      pushAudio(downsample(pcm, audioContext.sampleRate));
+    };
+    micSource.connect(micProcessor); micProcessor.connect(silentGain); silentGain.connect(audioContext.destination);
+    recording=true; transcript.value=''; transcript.readOnly=true;
+    results.classList.add('hidden'); empty.classList.remove('hidden');
+    document.getElementById('explanationSection').classList.add('hidden');
+    startRecordingBtn.classList.add('hidden'); stopRecordingBtn.classList.remove('hidden');
+    recordStatus.textContent='● Recording — scores update as each 20-word section is completed';recordStatus.classList.add('active');
+    updateButton();
+  } catch(err) { cleanupMic(); showError(`Could not start recording: ${err.message}`); }
+}
+async function stopLive() {
+  if (!recording || finishing) return;
+  recording=false;finishing=true;
+  cleanupMic();
+  stopRecordingBtn.disabled=true;
+  recordStatus.textContent='Finishing recording and analyzing…';
+  // Send remaining audio, including a short final segment.
+  if (sampleCount >= 1600) {
+    const remaining = new Float32Array(sampleCount); let pos=0;
+    for(const item of samples) {remaining.set(item,pos);pos+=item.length;}
+    queueChunk(remaining);
+  }
+  samples=[];sampleCount=0;
+  try {
+    await uploadChain;
+    if (recordError) throw recordError;
+    if (!transcript.value.trim()) throw new Error('No speech was detected');
+    loading.classList.remove('hidden'); results.classList.add('hidden'); empty.classList.add('hidden');
+    const finalResult=await apiPost('/live/finish', {session_id:sessionId});
+    document.getElementById('explanationSection').classList.remove('hidden');
+    displayResult(finalResult);
+    recordStatus.textContent='Recording finished';
+  } catch(err) { loading.classList.add('hidden');showError(`Final analysis failed: ${err.message}`);recordStatus.textContent='Recording stopped'; }
+  finally {
+    finishing=false; transcript.readOnly=false;stopRecordingBtn.disabled=false;
+    stopRecordingBtn.classList.add('hidden');startRecordingBtn.classList.remove('hidden');
+    recordStatus.classList.remove('active');updateButton();
+  }
+}
+startRecordingBtn.addEventListener('click',startLive);
+stopRecordingBtn.addEventListener('click',stopLive);
+updateButton();
+</script>
+</body>
+</html>

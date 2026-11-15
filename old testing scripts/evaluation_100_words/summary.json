@@ -1,0 +1,28 @@
+{
+  "input": "C:\\Users\\sethl\\OneDrive\\Desktop\\ICFD_Redistributed\\validation.jsonl",
+  "index": "C:\\Users\\sethl\\OneDrive\\Desktop\\ICFD_Redistributed\\semantic_index",
+  "settings": {
+    "input": "validation.jsonl",
+    "index": "semantic_index",
+    "output": "evaluation_100_words",
+    "limit_per_label": 50,
+    "group_words": 100,
+    "k": 20,
+    "batch_size": 16,
+    "seed": 42
+  },
+  "evaluated_conversations": 100,
+  "overlap_uids": 0,
+  "confusion": {
+    "true_scam_pred_scam": 50,
+    "true_scam_pred_legit": 0,
+    "true_legit_pred_scam": 2,
+    "true_legit_pred_legit": 48
+  },
+  "accuracy": 0.98,
+  "scam_precision": 0.9615384615384616,
+  "scam_recall": 1.0,
+  "scam_f1": 0.9803921568627451,
+  "legit_specificity": 0.96,
+  "notes": "Full-conversation 100-word groups; per-group balanced top-k unique neighbors, similarity**4, mean group score, threshold >50. No Qwen. Not calibrated probabilities."
+}
