@@ -1,7 +1,11 @@
 # CallShield — Real-Time AI Phone Scam Detection
 
 
+**CallShield — Video Demonstration**
 
+https://drive.google.com/file/d/1l8cwhGtPNk4kHR1_KOO7LtR58HIJBiaX/view?usp=sharing
+
+*Note: This video has been edited to remove processing delays and unnecessary pauses, keeping the demonstration concise. The application's results have not been altered.*
 
 
 ## The Problem
